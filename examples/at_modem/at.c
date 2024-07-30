@@ -461,17 +461,17 @@ void ATProcess(char *Input, int Len) {
     invalid_cmd = false;
     // Find the start of current command
     cmd_start = input_start;
-    while (isspace(*cmd_start) && (cmd_start < input_end)) {
+    while (isspace((unsigned char)*cmd_start) && (cmd_start < input_end)) {
       cmd_start++;
     }
     // Find the end of current command
     cmd_end = cmd_start;
-    while ((!isspace(*cmd_end)) && (cmd_end < input_end)) {
+    while ((!isspace((unsigned char)*cmd_end)) && (cmd_end < input_end)) {
       cmd_end++;
     }
     // No more commands
     if (cmd_start == cmd_end) break;
-    if (!isspace(*cmd_end)) {
+    if (!isspace((unsigned char)*cmd_end)) {
       invalid_cmd = true;
       DEBUG_ERROR("No terminator\n");
     } else if (cmd_end - cmd_start < AT_MIN_RX_SIZE) {
