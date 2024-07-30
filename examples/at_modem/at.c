@@ -112,7 +112,12 @@ void ATSetState(SysStates State) {
 }
 
 static SysStates ATGetState() {
-  if (HasValidGNSSFix()) State = AT_STATE_READY;
+  if (HasValidGNSSFix()) {
+    State = AT_STATE_READY;
+  } else{
+    State = AT_STATE_GNSS_ACQ;
+  }
+  
   return State;
 }
 
