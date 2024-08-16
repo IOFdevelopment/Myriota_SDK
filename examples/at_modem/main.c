@@ -23,8 +23,10 @@ static char RX[UART_MAX_RX_SIZE] = {0};
 
 static time_t ModemReceive() {
   //Ver RX antes y desp de leer
+  printf("--- RX antes de leer ---\n");
+  printf("IOF RX antes de leer = %c", RX[i]);
   for (int i = 0; i < UART_MAX_RX_SIZE; i++) {
-    printf("IOF RX antes de leer = %c", RX[i]);
+    printf("[IOF] RX antes de leer = %c", RX[i]);
   }
   printf("\n");
 
@@ -35,8 +37,9 @@ static time_t ModemReceive() {
     printf("No data received\n");
   }
 
+  printf("--- RX antes de leer ---\n");
   for (int i = 0; i < UART_MAX_RX_SIZE; i++) {
-    printf("IOF RX antes de leer = %c", RX[i]);
+    printf("[IOF] RX antes de leer = %c", RX[i]);
   }
   printf("\n");
 
