@@ -70,6 +70,14 @@ size_t ATReceive(char *Rx, size_t MaxLength) {
     if (UARTRead(UartHandle, &ch, 1) == 1) {
       if (count < MaxLength) {
         Rx[count++] = ch;
+        //Ver data recibida.
+        if (ch == '\r') {
+          char rx_copy[UART_MAX_RX_SIZE] = {0};
+          memcpy(rx_copy, Rx, count);
+          rx_copy[count + 1] = '\0';
+
+          DEBUG_INFO("[IOF] %s\n", rx_copy);
+        }
       }
     }
   }

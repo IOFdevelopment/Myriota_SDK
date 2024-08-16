@@ -22,12 +22,24 @@
 static char RX[UART_MAX_RX_SIZE] = {0};
 
 static time_t ModemReceive() {
+  //Ver RX antes y desp de leer
+  for (int i = 0; i < UART_MAX_RX_SIZE; i++) {
+    printf("IOF RX antes de leer = %c", RX[i]);
+  }
+  printf("\n");
+
   int len = ATReceive(RX, UART_MAX_RX_SIZE);
   if (len > 0) {
     ATProcess(RX, len);
   } else {
     printf("No data received\n");
   }
+
+  for (int i = 0; i < UART_MAX_RX_SIZE; i++) {
+    printf("IOF RX antes de leer = %c", RX[i]);
+  }
+  printf("\n");
+
   return OnLeuartReceive();
 }
 
